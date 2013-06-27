@@ -41,7 +41,7 @@ class ETimeSheetsAutoFill < Test::Unit::TestCase
         print "\nReading data...\n"
         data = File.open('data.csv').read
         data.each_line do |line|
-            unless line[0] == '#' || line == "\n" || line.empty? # Ignore comments and blank lines
+            unless line[0] == '#' || line == "\n" || line == "\r\n" || line.empty? # Ignore comments and blank lines
                 parts = line.split(',')
                 date = Date::strptime(parts[0], "%d/%m/%y") # Parse as a date.
 
