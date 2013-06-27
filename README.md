@@ -17,3 +17,12 @@ You will need:
 See example-data.csv for the data file format.
 
 Please log support requests as github issues on this repository. Feel free to clone, patch, and pull request!
+
+
+Notes for running on Linux (debian 7)
+apt-get install ruby ruby-dev selenium-client selenium-webdriver
+wget http://production.cf.rubygems.org/rubygems/rubygems-2.0.3.tgz -O gems203.tgz
+tar -xzvf gems203.tar
+cd rubygems-2.0.3/
+ruby setup.rb
+
