@@ -16,20 +16,17 @@ class ETimeSheetsAutoFill < Test::Unit::TestCase
     def setup
         @debug = false; @require_user_input = true;
         @root_url = ENV['ETIMESHEETS_URL']
-        unless @debug
-            # Run the selenium server.
-            @selenium_pid = Process.spawn('java -jar selenium-server-standalone-2.33.0.jar')
-            @driver = Selenium::WebDriver.for :firefox
-        end
+        @selenium_pid=0
     end
 
     def teardown
-        unless @debug
+        unless @debug || @selenium_pid==0
             Process.kill(9,@selenium_pid) # Kill selenium.
         end
     end
 
     def test_autofill_timesheet
+        
         # Database into which lines are read.
         # Format is eow->job%%%activity->date = [hours,comment]
         db = Hash.new{|h,k| h[k]=Hash.new{|h,k| h[k]=Hash.new{|h,k| h[k]=[0,""]}}}
@@ -92,6 +89,11 @@ class ETimeSheetsAutoFill < Test::Unit::TestCase
         end
 
         unless @debug
+            # Run the selenium server.
+            @selenium_pid = Process.spawn('java -jar selenium-server-standalone-2.33.0.jar')
+            @driver = Selenium::WebDriver.for :firefox
+       
+       
             # Login to eTimeSheets
             assert !root_url.nil? && !root_url.empty?, "eTimeSheets root URL not found in ENV."
             assert !ENV['ETIMESHEETS_USER'].nil? && !ENV['ETIMESHEETS_USER'].empty?, "eTimeSheets user not found in ENV."
