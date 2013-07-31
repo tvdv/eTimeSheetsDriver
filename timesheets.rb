@@ -40,7 +40,7 @@ class ETimeSheetsAutoFill < Test::Unit::TestCase
         data.each_line do |line|
             unless line[0] == '#' || line == "\n" || line == "\r\n" || line.empty? # Ignore comments and blank lines
                 parts = line.split(',')
-                date = Date::strptime(parts[0], "%d/%m/%y") # Parse as a date.
+                date = Date::strptime(parts[0], "%d/%m/%Y") # Parse as a date.
 
                 # Determine date of end of week (sunday) for this date.
                 eow_date = date
@@ -93,7 +93,7 @@ class ETimeSheetsAutoFill < Test::Unit::TestCase
             @selenium_pid = Process.spawn('java -jar selenium-server-standalone-2.33.0.jar')
             @driver = Selenium::WebDriver.for :firefox
        
-       
+
             # Login to eTimeSheets
             assert !root_url.nil? && !root_url.empty?, "eTimeSheets root URL not found in ENV."
             assert !ENV['ETIMESHEETS_USER'].nil? && !ENV['ETIMESHEETS_USER'].empty?, "eTimeSheets user not found in ENV."
