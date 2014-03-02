@@ -163,14 +163,14 @@ class ETimeSheetsAutoFill < Test::Unit::TestCase
                     element.clear
                     element.send_keys job
                     element.send_keys :tab
-                    sleep(0.1) # Wait for 100ms
+                    sleep(0.3) # Wait for 300ms
      
                     # Set 'Activity Code'
                     element = driver[:id => 'JCActivityCode']
                     element.clear
                     element.send_keys activity
                     element.send_keys :tab
-                    sleep(0.1) # Wait for 100ms
+                    sleep(0.3) # Wait for 300ms
 
                     # For each date for this job/activity, fill in hours
                     (1..7).each do |i|
