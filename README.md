@@ -20,10 +20,11 @@ Please log support requests as github issues on this repository. Feel free to cl
 
 
 Notes for installing on Linux (Debian 7):
-* apt-get install ruby ruby-dev selenium-client selenium-webdriver
+* apt-get install ruby ruby-dev
 * wget http://production.cf.rubygems.org/rubygems/rubygems-2.0.3.tgz -O gems203.tgz
 * tar -xzvf gems203.tar
 * cd rubygems-2.0.3/
 * ruby setup.rb
+* gem install selenium-webdriver
 
 
